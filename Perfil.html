@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil del Alumno - TEBAEV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Droid+Sans+Mono&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Droid Sans Mono', monospace;
+      background-color: #f5f7fa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+    }
+    header {
+      background-color: #722F37;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      font-family: 'Merriweather', serif;
+    }
+    .main-nav {
+      display: flex;
+      gap: 20px;
+    }
+    .main-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Droid Sans Mono', monospace;
+    }
+    .main-nav a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background-color: #722F37;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: auto;
+    }
+    main.content {
+      display: flex;
+      gap: 20px;
+      padding: 30px;
+    }
+    aside.sidebar-left, aside.sidebar-right, section.calendar-section {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    aside.sidebar-left, aside.sidebar-right {
+      width: 22%;
+    }
+    section.calendar-section {
+      width: 56%;
+    }
+    h3.section-title {
+      font-size: 20px;
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #8f3d38;
+      padding-bottom: 5px;
+      color: #722F37;
+    }
+    .card-list .card {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      font-family: 'Droid Sans Mono', monospace;
+    }
+    .card:hover {
+      background-color: #f0e6e6;
+      border-color: #8f3d38;
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+    .nav-button {
+      background-color: #8f3d38;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Droid Sans Mono', monospace;
+    }
+    .nav-button:hover {
+      background-color: #722F37;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+    .day {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.3s;
+      font-family: 'Droid Sans Mono', monospace;
+    }
+    .day:hover {
+      background-color: #f0f8ff;
+    }
+    .day.actividad {
+      background-color: #fff8e1;
+      border: 2px solid orange;
+    }
+    .day.examen {
+      background-color: #ffe5e5;
+      border: 2px solid crimson;
+    }
+    .day.reunion {
+      background-color: #e6ffe6;
+      border: 2px solid green;
+    }
+    .day .emoji {
+      font-size: 16px;
+      display: block;
+      margin-top: 4px;
+    }
+    .timeline {
+      list-style: none;
+      padding-left: 0;
+    }
+    .timeline li {
+      background-color: #fff;
+      border-left: 4px solid #8f3d38;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      position: relative;
+      font-family: 'Droid Sans Mono', monospace;
+    }
+    .timeline li span {
+      font-size: 18px;
+      margin-right: 8px;
+    }
+    .timeline li small {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">TEBAEV</div>
+    <nav class="main-nav">
+      <a href="perfil.html">Inicio</a>
+      <a href="profesores.html">Profesores</a>
+      <a href="contenido.html">Contenido Académico</a>
+      <a href="miperfilalumno.html">Perfil</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <aside class="sidebar-left">
+      <h3 class="section-title">📚 Materias</h3>
+      <div class="card-list">
+        <div class="card">SUBMÓDULO 1</div>
+        <div class="card">SUBMÓDULO 2</div>
+        <div class="card">MATEMÁTICAS</div>
+        <div class="card">ESPAÑOL III</div>
+        <div class="card">INGLÉS II</div>
+      </div>
+    </aside>
+
+    <section class="calendar-section">
+      <h3 class="section-title">📅 Calendario Académico</h3>
+      <div class="calendar-header">
+        <button class="nav-button" id="prev-month">◀</button>
+        <h2 id="calendar-title">Abril 2025</h2>
+        <button class="nav-button" id="next-month">▶</button>
+      </div>
+      <div class="calendar-grid" id="calendar-grid"></div>
+    </section>
+
+    <aside class="sidebar-right">
+      <h3 class="section-title">📌 Tareas y Eventos</h3>
+      <ul class="timeline">
+        <li><span>📝</span> Tarea 1 <small>1 abril</small></li>
+        <li><span>📝</span> Tarea 2 <small>8 abril</small></li>
+        <li><span>🎓</span> Examen tema 2 <small>17 abril</small></li>
+        <li><span>📝</span> Tarea 3 <small>20 abril</small></li>
+        <li><span>📢</span> Proyecto Final <small>28 abril</small></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="main-footer">
+    <p>© 2025 Telebachillerato de Veracruz | Plataforma educativa</p>
+  </footer>
+
+  <script>
+    const calendarGrid = document.getElementById("calendar-grid");
+    const calendarTitle = document.getElementById("calendar-title");
+    const prevMonthBtn = document.getElementById("prev-month");
+    const nextMonthBtn = document.getElementById("next-month");
+
+    const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+    let currentDate = new Date(2025, 3); // Abril 2025
+
+    const eventos = {
+      "2025-04-01": { tipo: "actividad", titulo: "Tarea 1" },
+      "2025-04-08": { tipo: "actividad", titulo: "Tarea 2" },
+      "2025-04-17": { tipo: "examen", titulo: "Examen tema 2" },
+      "2025-04-20": { tipo: "actividad", titulo: "Tarea 3" },
+      "2025-04-28": { tipo: "reunion", titulo: "Proyecto Final" }
+    };
+
+    function renderCalendar(date) {
+      calendarGrid.innerHTML = "";
+
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const offset = firstDay === 0 ? 6 : firstDay - 1;
+
+      calendarTitle.textContent = `${monthNames[month]} ${year}`;
+
+      for (let i = 0; i < offset; i++) {
+        const empty = document.createElement("div");
+        empty.className = "day empty";
+        calendarGrid.appendChild(empty);
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const day = document.createElement("div");
+        day.className = "day";
+
+        const fechaStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const evento = eventos[fechaStr];
+
+        let emoji = "";
+        if (evento) {
+          day.classList.add(evento.tipo);
+          day.title = evento.titulo;
+          if (evento.tipo === "actividad") emoji = "📝";
+          if (evento.tipo === "examen") emoji = "🎓";
+          if (evento.tipo === "reunion") emoji = "📢";
+        }
+
+        day.innerHTML = `${d} <span class="emoji">${emoji}</span>`;
+        calendarGrid.appendChild(day);
+      }
+    }
+
+    prevMonthBtn.onclick = () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar(currentDate);
+    };
+
+    nextMonthBtn.onclick = () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar(currentDate);
+    };
+
+    renderCalendar(currentDate);
+  </script>
+</body>
+</html>

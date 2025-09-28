@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TEBAEV - Inicio de Sesión</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #722F37;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    header img {
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 320px;
+      text-align: center;
+    }
+
+    .login-box img {
+      display: block;
+      margin: 0 auto 15px;
+      max-width: 120px;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+      font-size: 1.5em;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color:  #8f3d38;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #8f3d38;
+    }
+
+    footer {
+      background-color: #722F37;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+  </style>
+  <script>
+  function redirigir() {
+    const tipo = document.getElementById("tipo-usuario").value;
+    const usuario = document.getElementById("usuario").value;
+    const contrasena = document.getElementById("contrasena").value;
+
+    if (!tipo || !usuario || !contrasena) {
+      alert("Por favor completa todos los campos.");
+      return;
+    }
+
+    // Guardar el tipo de usuario en localStorage
+    localStorage.setItem("tipoUsuario", tipo);
+    localStorage.setItem("usuarioActivo", usuario);
+
+    // Redirigir según el tipo
+    if (tipo === "docente") {
+      window.location.href = "perfil_docente.html";
+    } else {
+      window.location.href = "perfil.html";
+    }
+  }
+</script>
+</head>
+<body>
+
+  <header>
+    <h1>TEBAEV - Plataforma Educativa</h1>
+  </header>
+
+  <main>
+    <div class="login-box">
+      <img src="img/logo_tebaev.png" alt="Logo TEBAEV">
+      <h2>Inicio de Sesión</h2>
+
+      <label for="tipo-usuario">Selecciona tu perfil</label>
+      <select id="tipo-usuario" required>
+        <option value="">-- Selecciona --</option>
+        <option value="alumno">Alumno</option>
+        <option value="docente">Docente</option>
+      </select>
+
+      <label for="usuario">Usuario</label>
+      <input type="text" id="usuario" name="usuario" required>
+
+      <label for="contrasena">Contraseña</label>
+      <input type="password" id="contrasena" name="contrasena" required>
+
+      <button onclick="redirigir()">Ingresar</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Telebachillerato de Veracruz | Plataforma educativa
+  </footer>
+
+</body>
+</html>
